@@ -10,16 +10,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Set up sbt
-      uses: olafurpg/setup-scala@v15
-      with:
-        sbt-version: 1.5.6
-
+    - name: Checkout
+      uses: actions/checkout@v4
+      
     - name: Set up JDK
       uses: actions/setup-java@v2
       with:
           java-version: adopt@1.13.0-2
-          
+
     - name: Run sbt tests
       run: |
         sbt test
