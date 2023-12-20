@@ -25,7 +25,7 @@ object HmdaUliApi {
     val host: String                  = config.getString("hmda.uli.http.host")
     val port: Int                     = config.getInt("hmda.uli.http.port")
 
-    BaseHttpApi.runServer(shutdown, name)(timed(routes), host, port)
+    BaeHttpApi.runServer(shutdown, name)(timed(routes), host, port)
     Behaviors.empty
   }
 }
