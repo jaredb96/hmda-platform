@@ -16,8 +16,8 @@ jobs:
     - name: Setup JDK
       uses: actions/setup-java@v3
       with:
-        distribution: temurin
-        java-version: 11.0.16+101
+        java-version: '17'
+        distribution: 'adopt'
 
     - name: Run sbt tests
       run: |
