@@ -129,42 +129,40 @@ class ParseErrorHttpApiSpec extends AkkaCassandraPersistenceSpec with MustMatche
       errorsProbe.expectMessage(HmdaRowParsedCount(100))
     }
   */
-//  override def afterAll(): Unit = super.afterAll()
-/*
-  "Parser HTTP API" must {
-    "Return Bad Request when requesting parsing errors from submission that doesn't exist" in {
-      val badUrl = "/institutions/XXX/filings/2019/submissions/1/parseErrors"
-      Get(badUrl) ~> parserErrorRoute(oAuth2Authorization) ~> check {
-        status mustBe StatusCodes.BadRequest
+  //  override def afterAll(): Unit = super.afterAll()
+  /*
+    "Parser HTTP API" must {
+      "Return Bad Request when requesting parsing errors from submission that doesn't exist" in {
+        val badUrl = "/institutions/XXX/filings/2019/submissions/1/parseErrors"
+        Get(badUrl) ~> parserErrorRoute(oAuth2Authorization) ~> check {
+          status mustBe StatusCodes.BadRequest
+        }
+      }
+      "Return paginated response with errors" in {
+        val firstPage =
+          s"/institutions/${sampleInstitution.LEI}/filings/${sampleSubmission.id.period}/submissions/${sampleSubmission.id.sequenceNumber}/parseErrors"
+
+        Get(firstPage) ~> parserErrorRoute(oAuth2Authorization) ~> check {
+          status mustBe StatusCodes.OK
+          val result = responseAs[ParsingErrorSummary]
+          result.total mustBe 100
+          result.count mustBe 20
+          result.links.self mustBe "?page=1"
+          result.links.next mustBe "?page=2"
+        }
+
+        val secondPage =
+          s"/institutions/${sampleInstitution.LEI}/filings/${sampleSubmission.id.period}/submissions/${sampleSubmission.id.sequenceNumber}/parseErrors?page=2"
+
+        Get(secondPage) ~> parserErrorRoute(oAuth2Authorization) ~> check {
+          status mustBe StatusCodes.OK
+          val result = responseAs[ParsingErrorSummary]
+          result.total mustBe 100
+          result.count mustBe 20
+          result.links.self mustBe "?page=2"
+          result.links.prev mustBe "?page=1"
+          result.links.next mustBe "?page=3"
+        }
       }
     }
-    "Return paginated response with errors" in {
-      val firstPage =
-        s"/institutions/${sampleInstitution.LEI}/filings/${sampleSubmission.id.period}/submissions/${sampleSubmission.id.sequenceNumber}/parseErrors"
-
-      Get(firstPage) ~> parserErrorRoute(oAuth2Authorization) ~> check {
-        status mustBe StatusCodes.OK
-        val result = responseAs[ParsingErrorSummary]
-        result.total mustBe 100
-        result.count mustBe 20
-        result.links.self mustBe "?page=1"
-        result.links.next mustBe "?page=2"
-      }
-
-      val secondPage =
-        s"/institutions/${sampleInstitution.LEI}/filings/${sampleSubmission.id.period}/submissions/${sampleSubmission.id.sequenceNumber}/parseErrors?page=2"
-
-      Get(secondPage) ~> parserErrorRoute(oAuth2Authorization) ~> check {
-        status mustBe StatusCodes.OK
-        val result = responseAs[ParsingErrorSummary]
-        result.total mustBe 100
-        result.count mustBe 20
-        result.links.self mustBe "?page=2"
-        result.links.prev mustBe "?page=1"
-        result.links.next mustBe "?page=3"
-      }
-    }
-  }
- */
-
 }
