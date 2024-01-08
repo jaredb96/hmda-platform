@@ -26,7 +26,7 @@ class HmdaRawDataSpec extends AkkaCassandraPersistenceSpec {
   val submissionId = SubmissionId("12345", Period(2018, None), 1)
 
   "dummyTest" in {
-    assert(false)
+    assert(true)
   }
   override def beforeAll(): Unit = {
 

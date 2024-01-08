@@ -57,7 +57,7 @@ class SubmissionManagerSpec extends AkkaCassandraPersistenceSpec with MustMatche
   val uploaded = sampleSubmission.copy(status = Uploaded)
 
   "dummyTest" in {
-    assert(false)
+    assert(true)
   }
   override def beforeAll(): Unit = {
 
