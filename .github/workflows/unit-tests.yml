@@ -20,7 +20,7 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
 
-      - name: Run sbt tests
+      - name: Run Sbt Tests
         run: |
           sbt test
           
@@ -49,6 +49,7 @@ jobs:
           echo "No files found matching the pattern."
           fi
 
+      - name: Upload Test Logs
         uses: actions/upload-artifact@v2
         with:
           name: test-logs
