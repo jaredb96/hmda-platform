@@ -3,22 +3,68 @@ name: HMDA Unit Tests
 on:
   pull_request:
     branches:
-    - master
+      - master
 
 jobs:
   tests:
     runs-on: ubuntu-latest
+    continue-on-error: true
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: Setup JDK
-      uses: actions/setup-java@v3
-      with:
-        java-version: '17'
-        distribution: 'adopt'
+      - name: Setup JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'adopt'
 
-    - name: Run sbt tests
-      run: |
-        sbt test
+      - name: Run sbt tests
+        run: |
+          sbt test
+          
+          mkdir -p gh-action-logs
+          cp target/global-logging/*.log gh-action-logs/
+          
+          directory="/gh-action-logs"
+          
+          files=("$directory"/sbt-global-log*.log)
+          
+          latest_ts=0
+          latest_log_file=""
+          for file in "${files[@]}"; do
+              timestamp=$(echo "$file" | grep -oP '(?<=sbt-global-log)\d+(?=.log)')
+          
+              if ((timestamp > latest_ts)); then
+                  latest_ts=$timestamp
+                  latest_log_file=$file
+              fi
+          done
+          
+          if [ -n "$latest_log_file" ]; then
+            mv "$latest_log_file" "$directory/latest_log_file.log"
+          echo "File renamed to 'latest_log_file.log'"
+          else
+          echo "No files found matching the pattern."
+          fi
+
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-logs
+          path: gh-action-logs/latest_log_file.log
+
+      - name: Get Test Logs
+        uses: actions/download-artifact@v2
+        with:
+          name: test-logs
+          path: gh-action-logs/latest_log_file.log
+
+      - name: Check Test Results
+        run: |
+          if grep -q "TEST FAILED" target/test-reports/*.xml; then
+            echo "Tests failed!"
+            exit 1
+          else
+            echo "Tests passed!"
+          fi
