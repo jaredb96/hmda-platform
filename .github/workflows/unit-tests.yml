@@ -32,7 +32,7 @@ jobs:
       - name: Store Test Logs
         run: |
           mkdir -p gh-action-logs
-          cp target/global-logging/*.log gh-action-logs/
+          cp target/global-logging/ gh-action-logs/
           directory="/gh-action-logs"
 
           files=("$directory"/sbt-global-log*.log)
