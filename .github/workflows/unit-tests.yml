@@ -49,6 +49,11 @@ jobs:
           echo "No files found matching the pattern."
           fi
 
+  test-results:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+
+    steps:
       - name: Upload Test Logs
         uses: actions/upload-artifact@v2
         with:
