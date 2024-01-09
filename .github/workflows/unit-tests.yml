@@ -23,37 +23,36 @@ jobs:
       - name: Run Sbt Tests
         run: |
           sbt test
-          
-          mkdir -p gh-action-logs
-          cp target/global-logging/*.log gh-action-logs/
-          
-          directory="/gh-action-logs"
-          
-          files=("$directory"/sbt-global-log*.log)
-          
-          latest_ts=0
-          latest_log_file=""
-          for file in "${files[@]}"; do
-              timestamp=$(echo "$file" | grep -oP '(?<=sbt-global-log)\d+(?=.log)')
-          
-              if ((timestamp > latest_ts)); then
-                  latest_ts=$timestamp
-                  latest_log_file=$file
-              fi
-          done
-          
-          if [ -n "$latest_log_file" ]; then
-            mv "$latest_log_file" "$directory/latest_log_file.log"
-          echo "File renamed to 'latest_log_file.log'"
-          else
-          echo "No files found matching the pattern."
-          fi
 
   test-results:
     runs-on: ubuntu-latest
     continue-on-error: true
 
     steps:
+      - name: Store Test Logs
+        run: |
+          mkdir -p gh-action-logs
+          cp target/global-logging/*.log gh-action-logs/
+          directory="/gh-action-logs"
+
+          files=("$directory"/sbt-global-log*.log)
+          latest_ts=0
+          latest_log_file=""
+          for file in "${files[@]}"; do
+              timestamp=$(echo "$file" | grep -oP '(?<=sbt-global-log)\d+(?=.log)')
+
+              if ((timestamp > latest_ts)); then
+                  latest_ts=$timestamp
+                  latest_log_file=$file
+              fi
+          done
+
+          if [ -n "$latest_log_file" ]; then
+            mv "$latest_log_file" "$directory/latest_log_file.log"
+            echo "File renamed to 'latest_log_file.log'"
+          else
+            echo "No files found matching the pattern."
+          fi
       - name: Upload Test Logs
         uses: actions/upload-artifact@v2
         with:
