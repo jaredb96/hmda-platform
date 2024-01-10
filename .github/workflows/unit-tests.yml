@@ -26,7 +26,7 @@ jobs:
 
       - name: Check Test Results
         run: |
-          if [ $(cat $$GITHUB_ENV | grep "TEST FAILED" | wc -l) -gt 2 ]; then
+          if [ $(cat $GITHUB_ENV | grep "TEST FAILED" | wc -l) -gt 2 ]; then
             echo "Unit tests failed."
             exit 1
           else
