@@ -21,13 +21,14 @@ jobs:
 
       - name: Run Sbt Tests
         run: |
-          sbt test
+          touch log_file
+          sbt test > log_file
         continue-on-error: true
 
       - name: Check Test Results
         run: |
-          cat $env:GITHUB_STEP_SUMMARY
-          if [ $(cat $env:GITHUB_STEP_SUMMARY | grep "TEST FAILED" | wc -l) -gt 2 ]; then
+          cat log_file
+          if [ $(cat log_file | grep "TEST FAILED" | wc -l) -gt 2 ]; then
             echo "Unit tests failed."
             exit 1
           else
