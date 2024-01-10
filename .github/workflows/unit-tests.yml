@@ -8,7 +8,6 @@ on:
 jobs:
   tests:
     runs-on: ubuntu-latest
-    continue-on-error: true
 
     steps:
       - name: Checkout
@@ -23,8 +22,16 @@ jobs:
       - name: Run Sbt Tests
         run: |
           sbt test
-          echo "::set-output name=summary::This is the summary message"
-          echo "GITHUB_STEP_SUMMARY=This is the log message" >> $GITHUB_ENV
+        continue-on-error: true
+
+      - name: Check Test Results
+        run: |
+          if grep 'TEST FAILED' "$GITHUB_ENV"
+            echo "Tests failed!"
+          exit 1
+          else
+            echo "Tests passed!"
+          fi
 
 
 
