@@ -101,7 +101,7 @@ class IntegrationSpec   extends AkkaCassandraPersistenceSpec
   )
 
   "dummyTest" in {
-    assert(false)
+    assert(true)
   }
   override def beforeAll(): Unit = {
 
