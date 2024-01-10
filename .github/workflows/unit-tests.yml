@@ -28,7 +28,7 @@ jobs:
         run: |
           if grep 'TEST FAILED' "$GITHUB_ENV"
             echo "Tests failed!"
-          exit 1
+            exit 1
           else
             echo "Tests passed!"
           fi
