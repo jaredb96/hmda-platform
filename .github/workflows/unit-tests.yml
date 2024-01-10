@@ -26,11 +26,11 @@ jobs:
 
       - name: Check Test Results
         run: |
-          if grep 'TEST FAILED' "$GITHUB_ENV"
-            echo "Tests failed!"
+          if echo "$GITHUB_ENV" | grep -q 'TEST FAILED'; then
+            echo "Unit tests failed."
             exit 1
           else
-            echo "Tests passed!"
+            echo "Unit tests passed."
           fi
 
 
