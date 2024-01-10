@@ -27,8 +27,7 @@ jobs:
 
       - name: Check Test Results
         run: |
-          cat log_file
-          if [ $(cat log_file | grep "TEST FAILED" | wc -l) -gt 0 ]; then
+          if [ $(cat log_file | grep -E "TEST FAILED|TESTS FAILED" | wc -l) -gt 0 ]; then
             echo "Unit tests failed."
             exit 1
           else
