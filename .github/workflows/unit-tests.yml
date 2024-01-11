@@ -21,13 +21,13 @@ jobs:
 
       - name: Run Sbt Tests
         run: |
-          touch log_file
-          sbt test > log_file
+          touch log-file
+          sbt test > log-file
         continue-on-error: true
 
       - name: Check Test Results
         run: |
-          if [ $(cat log_file | grep -E "TEST FAILED|TESTS FAILED" | wc -l) -gt 0 ]; then
+          if [ $(cat log-file | grep -E "TEST FAILED|TESTS FAILED" | wc -l) -gt 0 ]; then
             echo "Unit tests failed."
             exit 1
           else
