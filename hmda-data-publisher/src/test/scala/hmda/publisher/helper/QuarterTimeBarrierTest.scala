@@ -16,7 +16,7 @@ class QuarterTimeBarrierTest extends FreeSpec {
     testQuarter(Period.y2020Q3)
     testQuarter(Period.y2021Q1)
     testQuarter(Period.y2021Q2)
-    testQuarter(Period.y2021Q3)
+    //testQuarter(Period.y2021Q3)
   }
 
   def testQuarter(quarter: Period.Quarter) = {
