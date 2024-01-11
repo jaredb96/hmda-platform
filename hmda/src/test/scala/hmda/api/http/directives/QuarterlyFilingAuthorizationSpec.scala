@@ -28,18 +28,6 @@ class QuarterlyFilingAuthorizationSpec extends AkkaCassandraPersistenceSpec with
 
   val logger: Logger = LoggerFactory.getLogger("quartery-filing-authorization-spec")
 
-  "dummyTest" in {
-    assert(true)
-  }
-  override def beforeAll(): Unit = {
-
-  }
-
-  override def afterAll(): Unit = {
-
-  }
-  /*
-
   override def beforeAll(): Unit = {
     super.beforeAll()
     Cluster(typedSystem).manager ! Join(Cluster(typedSystem).selfMember.address)
@@ -106,5 +94,4 @@ class QuarterlyFilingAuthorizationSpec extends AkkaCassandraPersistenceSpec with
       }
     }
   }
-   */
 }
