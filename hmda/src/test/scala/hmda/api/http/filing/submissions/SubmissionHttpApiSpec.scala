@@ -73,17 +73,6 @@ class SubmissionHttpApiSpec extends AkkaCassandraPersistenceSpec with MustMatche
   val filingProbe: TestProbe[FilingEvent] =
     TestProbe[FilingEvent]("filing-probe")
 
-  "dummyTest" in {
-    assert(true)
-  }
-  override def beforeAll(): Unit = {
-
-  }
-
-  override def afterAll(): Unit = {
-
-  }
-  /*
   override def beforeAll(): Unit = {
     super.beforeAll()
     Cluster(typedSystem).manager ! Join(Cluster(typedSystem).selfMember.address)
@@ -154,6 +143,5 @@ class SubmissionHttpApiSpec extends AkkaCassandraPersistenceSpec with MustMatche
       }
     }
   }
-  */
 
 }

@@ -46,18 +46,6 @@ class FilingPersistenceSpec extends AkkaCassandraPersistenceSpec {
 
   val modified = sampleSubmission.copy(status = Uploaded)
 
-  "dummyTest" in {
-    assert(true)
-  }
-  override def beforeAll(): Unit = {
-
-  }
-
-  override def afterAll(): Unit = {
-
-  }
-  /*
-
   override def beforeAll(): Unit = {
     super.beforeAll()
     InstitutionPersistence.startShardRegion(ClusterSharding(system.toTyped))
@@ -117,5 +105,4 @@ class FilingPersistenceSpec extends AkkaCassandraPersistenceSpec {
       filingPersistence ! UpdateSubmission(updated, Some(submissionProbe.ref))
     }
   }
-   */
 }

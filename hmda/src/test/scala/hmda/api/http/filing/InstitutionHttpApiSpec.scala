@@ -67,19 +67,6 @@ class InstitutionHttpApiSpec extends AkkaCassandraPersistenceSpec with MustMatch
     .copy(lei = sampleInstitution.LEI)
     .copy(period = period)
 
-  "dummyTest" in {
-    assert(true)
-  }
-  override def beforeAll(): Unit = {
-
-  }
-
-  override def afterAll(): Unit = {
-
-  }
-
-  /*
-
   override def beforeAll(): Unit = {
     super.beforeAll()
     Cluster(typedSystem).manager ! Join(Cluster(typedSystem).selfMember.address)
@@ -118,6 +105,5 @@ class InstitutionHttpApiSpec extends AkkaCassandraPersistenceSpec with MustMatch
       }
     }
   }
-   */
 
 }

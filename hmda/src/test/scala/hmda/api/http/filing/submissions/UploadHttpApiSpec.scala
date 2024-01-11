@@ -90,18 +90,6 @@ class UploadHttpApiSpec extends AkkaCassandraPersistenceSpec with MustMatchers w
     .getOrElse(Submission(submissionId))
     .copy(id = submissionId)
 
-  "dummyTest" in {
-    assert(true)
-  }
-  override def beforeAll(): Unit = {
-
-  }
-
-  override def afterAll(): Unit = {
-
-  }
-  /*
-
   override def beforeAll(): Unit = {
     super.beforeAll()
     Cluster(typedSystem).manager ! Join(Cluster(typedSystem).selfMember.address)
@@ -170,6 +158,5 @@ class UploadHttpApiSpec extends AkkaCassandraPersistenceSpec with MustMatchers w
       }
     }
   }
-  */
 
 }

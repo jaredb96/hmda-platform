@@ -25,17 +25,6 @@ class HmdaRawDataSpec extends AkkaCassandraPersistenceSpec {
 
   val submissionId = SubmissionId("12345", Period(2018, None), 1)
 
-  "dummyTest" in {
-    assert(false)
-  }
-  override def beforeAll(): Unit = {
-
-  }
-
-  override def afterAll(): Unit = {
-
-  }
-  /*
   "HMDA Raw Data" must {
     Cluster(typedSystem).manager ! Join(Cluster(typedSystem).selfMember.address)
     "be persisted" in {
@@ -49,6 +38,5 @@ class HmdaRawDataSpec extends AkkaCassandraPersistenceSpec {
       hmdaRawProbe.expectMessage(LinesAdded(List(LineAdded(timestamp, "data1"), LineAdded(timestamp, "data2"))))
     }
   }
-  */
 
 }

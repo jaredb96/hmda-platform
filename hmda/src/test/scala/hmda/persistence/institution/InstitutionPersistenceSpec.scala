@@ -33,19 +33,6 @@ class InstitutionPersistenceSpec extends AkkaCassandraPersistenceSpec {
   val modified =
     sampleInstitution.copy(emailDomains = List("bank.com"))
 
-  "dummyTest" in {
-    assert(true)
-  }
-  override def beforeAll(): Unit = {
-
-  }
-
-  override def afterAll(): Unit = {
-
-  }
-
-  /*
-
   "An institution" must {
     "be created and read back" in {
       val institutionPersistence =
@@ -149,6 +136,5 @@ class InstitutionPersistenceSpec extends AkkaCassandraPersistenceSpec {
       maybeInstitutionProbe.expectMessage(None)
     }
   }
-   */
 
 }

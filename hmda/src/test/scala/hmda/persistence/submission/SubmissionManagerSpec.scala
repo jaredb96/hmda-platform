@@ -56,19 +56,6 @@ class SubmissionManagerSpec extends AkkaCassandraPersistenceSpec with MustMatche
 
   val uploaded = sampleSubmission.copy(status = Uploaded)
 
-  "dummyTest" in {
-    assert(true)
-  }
-  override def beforeAll(): Unit = {
-
-  }
-
-  override def afterAll(): Unit = {
-
-  }
-
-  /*
-
   override def beforeAll(): Unit = {
     super.beforeAll()
     SubmissionManager.startShardRegion(sharding)
@@ -138,5 +125,4 @@ class SubmissionManagerSpec extends AkkaCassandraPersistenceSpec with MustMatche
       }
     }
   }
-  */
 }
