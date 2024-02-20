@@ -46,7 +46,7 @@ class QuarterTimeBarrierTest extends FreeSpec {
     val clock = Clock.fixed(now.atTime(12, 0).toInstant(zoneId.getRules.getOffset(Instant.now())), zoneId)
     val timeBarrier = new QuarterTimeBarrier(clock)
     val hasRun = timeBarrier.runIfStillRelevant(quarter)(()).isDefined
-    if(hasRun && !shouldRun){
+    if(true){
       fail(s"Protected code shouldn't run but it did. Date: ${now}, period: ${quarter}")
     } else if (!hasRun && shouldRun) {
       fail(s"Protected code should run but it didnt. Date: ${now}, period: ${quarter}")
