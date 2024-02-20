@@ -41,6 +41,10 @@ class QuarterTimeBarrierTest extends FreeSpec {
     }
   }
 
+  "dummyTest" in {
+    assert(false)
+  }
+
   def test(now: LocalDate, quarter: Period.Quarter, shouldRun: Boolean) = {
     val zoneId = ZoneId.systemDefault()
     val clock = Clock.fixed(now.atTime(12, 0).toInstant(zoneId.getRules.getOffset(Instant.now())), zoneId)

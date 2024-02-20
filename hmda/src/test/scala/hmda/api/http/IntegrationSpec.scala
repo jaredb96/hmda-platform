@@ -99,7 +99,7 @@ class IntegrationSpec   extends AkkaCassandraPersistenceSpec
     contents = scala.io.Source.fromResource("clean_file_1000_rows_Bank0_syntax_validity.txt").getLines().mkString("\n"),
     fileName = "clean_file_1000_rows_Bank0_syntax_validity.txt"
   )
-  
+
 
   override def beforeAll(): Unit = {
     super.beforeAll()
