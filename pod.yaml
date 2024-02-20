@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: jared-hmda-pod
+spec:
+  containers:
+  - name: clever-galileo
+    image: jaredb96/hmda:hmda-tag
+    ports:
+    - containerPort: 8080
