@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ include "hmda-quarterly-data-service.fullname" . }}-mv-configmap
+  name: hmda-quarterly-data-service-mv-configmap
 data:
   APP_VOL: app_vol
   ALL_APP_VOL: all_app_vol
