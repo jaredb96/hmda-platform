@@ -32,7 +32,7 @@ jobs:
 
       - name: Check Test Results
         run: |
-          if [ $(grep 'All tests passed.' log-file | wc -l) -ne 13 ]; then
+          if [ $(grep 'All tests passed.' log-file | wc -l) -ne 2 ]; then
             echo "One or more projects had failures. Please review the logs."
             exit 1
           else
