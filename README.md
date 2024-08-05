@@ -108,7 +108,7 @@ Before running the HMDA Platform, make sure to have the following installed:
 4. <a href="./docs/JavaInstall.md">Java (version 13.0.2) for MacOS</a>
 5. Scala (version 2.12 for compatibility issues) - ```bash brew install scala@2.12 ```
 6. sdk - https://sdkman.io/install
-Next, use sdk to install sbt instead of brew (it won't work with brew) (Note: before install, check what version is currently being used in project/build.properties and install that version or higher):
+Next, use sdk to install s  bt instead of brew (it won't work with brew) (Note: before install, check what version is currently being used in project/build.properties and install that version or higher):
 
 ```bash
 sdk install sbt
