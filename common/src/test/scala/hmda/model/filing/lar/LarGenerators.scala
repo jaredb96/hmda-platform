@@ -67,7 +67,7 @@ object LarGenerators {
 
   implicit def larIdentifierGen: Gen[LarIdentifier] = {
     for {
-      lei <- stringOfN(20, Gen.alphaUpperChar)
+      lei <- stringOfN(20, Gen.alphaUpperChar.suchThat(a => a >= 'A' && a <= 'K'))
       nmlsrIdentifier <- intValueOrNA(Gen.choose(0, Int.MaxValue))
     } yield LarIdentifier(2, lei, nmlsrIdentifier)
 
