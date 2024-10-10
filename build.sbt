@@ -817,3 +817,5 @@ lazy val `hmda-quarterly-data-service` = (project in file ("hmda-quarterly-data-
   )
   .dependsOn(common % "compile->compile;test->test")
   .dependsOn(`hmda-protocol` % "compile->compile;test->test")
+
+Test / testOptions += Tests.Argument("-u", "test-reports") // directory for test reports
