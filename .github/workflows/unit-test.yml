@@ -377,11 +377,3 @@ jobs:
         with:
           name: test-results
           path: test-reports
-
-      - name: Report Test Results
-        uses: dorny/test-reporter@v1
-        if: always()
-        with:
-          name: Unit Test Report
-          path: test-reports/*.xml
-          reporter: junit
