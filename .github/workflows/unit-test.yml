@@ -354,9 +354,12 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
 
+      - name: Create Test Reports Directory
+        run: mkdir -p $GITHUB_WORKSPACE/test-reports
+
       - name: Run submission-errors Tests
         run: |
-          sbt "project submission-errors" "testOnly -- -l actions-ignore" 2>&1 | tee -a log-file
+          sbt "project submission-errors" "testOnly -- -l actions-ignore -u test-reports" 2>&1 | tee -a log-file
         continue-on-error: true
 
       - name: Check Test Results
@@ -368,3 +371,9 @@ jobs:
             echo "All tests passed."
             exit 0
           fi
+
+      - name: Upload Test Results
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results
+          path: test-reports
