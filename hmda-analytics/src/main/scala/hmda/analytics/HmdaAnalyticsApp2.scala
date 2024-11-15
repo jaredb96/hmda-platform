@@ -32,6 +32,21 @@ import org.slf4j.{Logger, LoggerFactory}
 import scala.concurrent.Future
 import scala.concurrent.duration._
 
+class AnalyticsAppConfig {
+  implicit val system       = ActorSystem()
+  implicit val typedSystem  = system.toTyped
+  implicit val materializer = Materializer(system)
+  implicit val ec           = system.dispatcher
+
+  implicit val timeout = Timeout(5.seconds)
+
+  val kafkaConfig = system.settings.config.getConfig("akka.kafka.consumer")
+  val config      = ConfigFactory.load()
+  val parallelism = config.getInt("hmda.analytics.parallelism")
+  val larDeletion = config.getBoolean("hmda.analytics.larDeletion")
+  val historyInsertion = config.getBoolean("hmda.analytics.historyInsertion")
+  val tsDeletion = config.getBoolean("hmda.analytics.tsDeletion")
+}
 // $COVERAGE-OFF$
 trait HmdaAnalyticsApp2 extends App with TransmittalSheetComponent with LarComponent with SubmissionHistoryComponent {
   def run(): String = "Hello, world!"
