@@ -27,7 +27,7 @@ import hmda.util.streams.FlowUtils.framing
 import hmda.utils.YearUtils.Period
 import org.apache.kafka.clients.consumer.ConsumerConfig
 import org.apache.kafka.common.serialization.StringDeserializer
-import org.slf4j.LoggerFactory
+import org.slf4j.{Logger, LoggerFactory}
 
 import scala.concurrent.Future
 import scala.concurrent.duration._
@@ -35,5 +35,9 @@ import scala.concurrent.duration._
 // $COVERAGE-OFF$
 trait HmdaAnalyticsApp2 extends App with TransmittalSheetComponent with LarComponent with SubmissionHistoryComponent {
   def run(): String = "Hello, world!"
+
+  def getLogger(): Logger = {
+    LoggerFactory.getLogger("hmda")
+  }
 }
 // $COVERAGE-ON$
