@@ -34,8 +34,6 @@ import scala.concurrent.duration._
 
 // $COVERAGE-OFF$
 trait HmdaAnalyticsApp2 extends App with TransmittalSheetComponent with LarComponent with SubmissionHistoryComponent {
-  def run(): String = "Hello world"
-
-
+  def run(): String = "Hello, world!"
 }
 // $COVERAGE-ON$

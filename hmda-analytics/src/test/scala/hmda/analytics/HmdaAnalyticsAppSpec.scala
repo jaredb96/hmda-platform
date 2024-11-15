@@ -3,13 +3,12 @@ package hmda.analytics
 import org.scalatest.{AsyncWordSpec, MustMatchers}
 
 class HmdaAnalyticsAppSpec extends AsyncWordSpec with MustMatchers {
-  "HmdaAnalyticsApp" must
+  object TestHmdaAnalyticsApp extends HmdaAnalyticsApp2
+  "TestHmdaAnalyticsApp" must
     {
-      "return hmda logger" in {
-        val app = HmdaAnalyticsApp
-        val logger = HmdaAnalyticsApp.log
-        logger mustEqual null
+      "return correct log string" in {
+        val log = TestHmdaAnalyticsApp.run()
+        log mustEqual "Hello, world!"
       }
     }
-
 }
